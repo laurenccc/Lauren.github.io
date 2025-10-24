@@ -25,6 +25,26 @@
     h1 { font-size: 2.5em; margin: 20px 0; }
     h2 { font-size: 1.5em; margin-bottom: 15px; }
 
+    /* 让照片和文字水平排列 */
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap; /* 小屏幕可换行 */
+    }
+
+    .header-content img {
+      width: 220px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(255, 105, 180, 0.6);
+    }
+
+    .header-text {
+      text-align: left;
+      max-width: 500px;
+    }
+
     section {
       padding: 20px;
       margin: 20px;
@@ -98,9 +118,13 @@
 <div class="cursor-dot" id="cursor-dot"></div>
 
 <header>
-  <h1>Hi, I'm Lauren 🌸</h1>
-  <img src="IMG_9940.jpeg" alt="My photo" width="400">
-  <p class="typing" id="intro"></p>
+  <div class="header-content">
+    <img src="IMG_9940.jpeg" alt="My photo">
+    <div class="header-text">
+      <h1>Hi, I'm Lauren 🌸</h1>
+      <p class="typing" id="intro"></p>
+    </div>
+  </div>
 </header>
 
 <section>
@@ -159,7 +183,7 @@
 </section>
 
 <script>
-
+  // 滚动动画
   const sections = document.querySelectorAll('section');
   window.addEventListener('scroll', () => {
     sections.forEach(sec => {
@@ -169,7 +193,7 @@
     });
   });
 
- 
+  // 打字效果
   const introText = "Freshman at Rutgers University, majoring in Computer Science";
   const introElement = document.getElementById('intro');
   let index = 0;
@@ -182,6 +206,7 @@
   }
   typeIntro();
 
+  // 鼠标光点移动
   const cursor = document.getElementById('cursor-dot');
   document.addEventListener('mousemove', e => {
     cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
@@ -190,3 +215,4 @@
 
 </body>
 </html>
+
